@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本过滤器</title>
+</head>
+<body>
+
+<section>
+    <div class="box1">-111-</div>
+    <div class="box2">-222-</div>
+    <div class="box3">-333-</div>
+    <div class="box4">-444-</div>
+    <div class="box5">-555-</div>
+</section>
+
+<hr/>
+<button id="first-btn" type="button">first</button>
+<br/>
+<button id="last-btn" type="button">last</button>
+<br/>
+<button id="not-btn" type="button">not</button>
+<br/>
+<button id="eq-btn" type="button">eq</button>
+<br/>
+<button id="slice-btn" type="button">slice</button>
+<br/>
+<button id="odd-btn" type="button">odd</button>
+<br/>
+<button id="even-btn" type="button">even</button>
+<br/>
+<button id="gt-btn" type="button">gt</button>
+<br/>
+<button id="lt-btn" type="button">lt</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let divs = $("div");
+
+        $("#first-btn")[0].onclick = () => {
+            console.log($("div:first"));
+            console.log(divs.first());
+        };
+
+        $("#last-btn")[0].onclick = () => {
+            console.log($("div:last"));
+            console.log(divs.last());
+        };
+
+        $("#not-btn")[0].onclick = () => {
+            console.log(divs.not(".box3"));
+        };
+
+        $("#eq-btn")[0].onclick = () => {
+            console.log($("div:eq(2)"));
+            console.log(divs.eq(2));
+            console.log(divs.eq(-2));
+        };
+
+        $("#slice-btn")[0].onclick = () => {
+            console.log(divs.slice(1, 4));
+            console.log(divs.slice(2));
+            console.log(divs.slice(2, -2));
+        };
+
+        $("#odd-btn")[0].onclick = () => {
+            console.log($("div:odd"));
+        };
+
+        $("#even-btn")[0].onclick = () => {
+            console.log($("div:even"));
+        };
+
+        $("#gt-btn")[0].onclick = () => {
+            console.log($("div:gt(2)"));
+            console.log($("div:gt(-2)"));
+        };
+
+        $("#lt-btn")[0].onclick = () => {
+            console.log($("div:lt(3)"));
+            console.log($("div:lt(-3)"));
+        };
+
+    });
+</script>
+</body>
+</html>
