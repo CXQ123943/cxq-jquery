@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单选择器</title>
+</head>
+<body>
+
+<form id="login-form">
+    <label><input type="text"/></label>
+    <label><input type="text" disabled="disabled"/></label>
+    <label><input type="password"/></label>
+    <label><input type="radio"/></label>
+    <label><input type="radio" checked="checked"/></label>
+    <label><input type="checkbox"/></label>
+    <label><input type="file"/></label>
+    <label><input type="image" src="" alt=""/></label>
+    <label><input type="hidden"/></label>
+    <label><input type="button" value="普通按钮"/></label>
+    <label><input type="submit" value="提交按钮"/></label>
+    <label><input type="reset" value="重置按钮"/></label>
+    <button type="button">普通按钮</button>
+    <button type="submit">提交按钮</button>
+    <button type="reset">重置按钮</button>
+    <label>
+        <select>
+            <option>苹果</option>
+            <option selected="selected">香蕉</option>
+        </select>
+    </label>
+    <label><textarea></textarea></label>
+    <span hidden="hidden"></span>
+
+</form>
+<hr/>
+ni keyigwi ()nikwyi gewiwo
+<section>
+    <a href="javascript:" id="input-a">:input</a><br/>
+    <a href="javascript:" id="text-a">:text</a><br/>
+    <a href="javascript:" id="password-a">:password</a><br/>
+    <a href="javascript:" id="radio-a">:radio</a><br/>
+    <a href="javascript:" id="checkbox-a">:checkbox</a><br/>
+    <a href="javascript:" id="button-a">:button</a><br/>
+    <a href="javascript:" id="submit-a">:submit</a><br/>
+    <a href="javascript:" id="reset-a">:reset</a><br/>
+    <a href="javascript:" id="file-a">:file</a><br/>
+    <a href="javascript:" id="image-a">:image</a><br/>
+    <a href="javascript:" id="hidden-a">:hidden</a><br/>
+    <a href="javascript:" id="enabled-a">:enabled</a><br/>
+    <a href="javascript:" id="disabled-a">:disabled</a><br/>
+    <a href="javascript:" id="checked-a">:checked</a><br/>
+    <a href="javascript:" id="selected-a">:selected</a><br/>
+</section>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let loginForm = $("#login-form");
+        $("#input-a")[0].onclick = () => {
+            console.log(loginForm.find(":input"));
+        };
+        $("#text-a")[0].onclick = () => {
+            console.log(loginForm.find(":text"));
+        };
+        $("#password-a")[0].onclick = () => {
+            console.log(loginForm.find(":password"));
+        };
+        $("#radio-a")[0].onclick = () => {
+            console.log(loginForm.find(":radio"));
+        };
+        $("#checkbox-a")[0].onclick = () => {
+            console.log(loginForm.find(":checkbox"));
+        };
+        $("#button-a")[0].onclick = () => {
+            console.log(loginForm.find(":button"));
+        };
+        $("#submit-a")[0].onclick = () => {
+            console.log(loginForm.find(":submit"));
+        };
+        $("#reset-a")[0].onclick = () => {
+            console.log(loginForm.find(":reset"));
+        };
+        $("#file-a")[0].onclick = () => {
+            console.log(loginForm.find(":file"));
+        };
+        $("#image-a")[0].onclick = () => {
+            console.log(loginForm.find(":image"));
+        };
+        $("#hidden-a")[0].onclick = () => {
+            console.log(loginForm.find(":hidden"));
+        };
+        $("#enabled-a")[0].onclick = () => {
+            console.log(loginForm.find(":enabled"));
+        };
+        $("#disabled-a")[0].onclick = () => {
+            console.log(loginForm.find(":disabled"));
+        };
+        $("#checked-a")[0].onclick = () => {
+            console.log(loginForm.find(":checked"));
+        };
+        $("#selected-a")[0].onclick = () => {
+            console.log(loginForm.find(":selected"));
+        };
+        $(nikeyi geiwoz hxei dx meiyui ni
+        yaoshi zhey ;);
+    });
+
+</script>
+
+</body>
+</html>
