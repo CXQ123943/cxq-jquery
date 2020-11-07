@@ -5,8 +5,77 @@
     <title>家族选择器</title>
 </head>
 <body>
+<div id="yy">杨业
+    <div>大郎-杨延平</div>
+    <div>二郎-杨延定</div>
+    <div>三郎-杨延光</div>
+    <div>四郎-杨延辉</div>
+    <div>五郎-杨延德</div>
+    <div id="yyz">六郎-杨延昭
+        <div>杨文广</div>
+        <div>杨宗保</div>
+    </div>
+    <div>七郎-杨延嗣</div>
+    <div>八郎-杨延顺</div>
+</div>
 
+<section id="btn-sec">
+    <button type="button" onclick="yy()">杨业</button>
+    <br/>
+    <button type="button" onclick="yyhd()">杨业后代</button>
+    <br/>
+    <button type="button" onclick="yjbz()">杨家八子</button>
+    <br/>
+    <button type="button" onclick="yys()">七郎杨延嗣</button>
+    <br/>
+    <button type="button" onclick="yyzdddm()">杨延昭的弟弟们</button>
+    <br/>
+    <button type="button" onclick="yyd()">五郎杨延德</button>
+    <br/>
+    <button type="button" onclick="yyzdggm()">杨延昭的哥哥们</button>
+    <br/>
+    <button type="button" onclick="yyzdxdm()">杨延昭的兄弟们</button>
+    <br/>
+</section>
 
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    function yy() {
+        console.log($("#yy"));
+    }
+
+    function yyhd() {
+        console.log($("#yy div"));
+        console.log($("#yy").find("div"));
+    }
+
+    function yjbz() {
+        console.log($("#yy > div"));
+        console.log($("#yy").children("div"));
+    }
+
+    function yys() {
+        console.log($("#yyz + div"));
+        console.log($("#yy").next("div"));
+    }
+
+    function yyzdddm() {
+        console.log($("#yyz ~ div"));
+        console.log($("#yyz").nextAll("div"));
+    }
+
+    function yyd() {
+        console.log($("#yyz").prev("div"));
+    }
+
+    function yyzdggm() {
+        console.log($("#yyz").prevAll("div"));
+    }
+
+    function yyzdxdm() {
+        console.log($("#yyz").siblings("div"));
+    }
+</script>
 
 </body>
 </html>
