@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本选择器</title>
+    <style type="text/css">
+        #id-btn {
+            color: red; /*无容错功能*/
+        }
+    </style>
+</head>
+<body>
+
+<div class="aaa bbb">CLASS选择器测试DIV</div>
+
+<section>TAG选择器测试SECTION001</section>
+<section>TAG选择器测试SECTION002</section>
+
+<hr/>
+<button id="all-btn" type="button">全部选择器</button>
+<br/>
+<button id="id-btn" type="button">ID选择器001</button>
+<br/>
+<button id="id-btn" type="button">ID选择器002</button>
+<br/>
+<button id="class-btn" type="button">CLASS选择器</button>
+<br/>
+<button id="tag-btn" type="button">标签选择器</button>
+<br/>
+<button id="group-btn" type="button">群组选择器</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        $("#all-btn")[0].onclick = () => {
+            console.log($("*"));
+        };
+
+        $("#id-btn")[0].onclick = () => {
+            console.log($("#id-btn"));
+        };
+
+        $("#class-btn")[0].onclick = () => {
+            console.log($(".aaa.bbb"));
+        };
+
+        $("#tag-btn")[0].onclick = () => {
+            console.log($("section"));
+        };
+
+        $("#group-btn")[0].onclick = () => {
+            console.log($("#id-btn,.aaa.bbb,section"));
+        };
+    });
+
+</script>
+</body>
+</html>
