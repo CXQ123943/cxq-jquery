@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性过滤器</title>
+</head>
+<body>
+<section>
+    <div>爷爷</div>
+    <div>蛇精</div>
+    <div skill="力大无穷">大娃-红娃：力大无穷</div>
+    <div skill="眼观耳听">二娃-橙娃：眼观耳听</div>
+    <div skill="刀枪不入">三娃-黄娃：刀枪不入</div>
+    <div skill="喷火吞火">四娃-绿娃：喷火吞火</div>
+    <div skill="喷水吞水">五娃-青娃：喷水吞水</div>
+    <div skill="隐身透体">六娃-蓝娃：隐身透体</div>
+    <div skill="吸收万物">七娃-紫娃：吸收万物</div>
+    <div skill="力大无穷-眼观耳听 刀枪不入 喷火吞火 喷水吞水 隐身透体 吸收万物">小金刚：全能</div>
+</section>
+
+<hr/>
+<button type="button" onclick="fn1();">拥有skill这个属性的人物</button>
+<br/>
+<button type="button" onclick="fn2();">拥有隐身透体能力的葫芦娃</button>
+<br/>
+<button type="button" onclick="fn3();">能力不是力大无穷的葫芦娃</button>
+<br/>
+<button type="button" onclick="fn4();">能力以"喷"字开头的葫芦娃</button>
+<br/>
+<button type="button" onclick="fn5();">能力以"物"字结尾的葫芦娃</button>
+<br/>
+<button type="button" onclick="fn6();">能力包含"吞"字的葫芦娃</button>
+<br/>
+<button type="button" onclick="fn7();">能力为"力大无穷"或以"力大无穷-"为前缀的</button>
+<br/>
+<button type="button" onclick="fn8();">能力按空格分割后，含"刀枪不入"的葫芦娃</button>
+<br/>
+<button type="button" onclick="fn9();">能力包含"吞"且以"喷"开头且不喷水吞水的葫芦娃</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+    function fn1() {
+        console.log($(`div[skill]`));
+    }
+
+    function fn2() {
+        console.log($(`div[skill="隐身透体"]`));
+    }
+
+    function fn3() {
+        console.log($(`div[skill!="力大无穷"]`));
+    }
+
+    function fn4() {
+        console.log($(`div[skill^="喷"]`));
+    }
+
+    function fn5() {
+        console.log($(`div[skill$="物"]`));
+    }
+
+    function fn6() {
+        console.log($(`div[skill*="吞"]`));
+    }
+
+    function fn7() {
+        console.log($(`div[skill|="力大无穷"]`));
+    }
+
+    function fn8() {
+        console.log($(`div[skill~="刀枪不入"]`));
+    }
+
+    function fn9() {
+        console.log($(`div[skill*="吞"][skill^="喷"][skill!="喷水吞水"]`));
+    }
+</script>
+</body>
+</html>
