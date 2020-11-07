@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多库冲突</title>
+</head>
+<body>
+
+<button id="plan-a-btn" type="button">方案a</button>
+<br/>
+<button id="plan-b-btn" type="button">方案b</button>
+<br/>
+<button id="plan-c-btn" type="button">方案c</button>
+<br/>
+
+<script type="text/javascript" src="../../script/prototype.js"></script>
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+
+        $("#plan-a-btn")[0].onclick = () => {
+            jQuery.noConflict();
+            console.log(jQuery("#plan-a-btn").text());
+        };
+
+        $("#plan-b-btn")[0].onclick = () => {
+            let my$ = jQuery.noConflict();
+            console.log(my$("#plan-b-btn").text());
+        };
+
+        $("#plan-c-btn")[0].onclick = () => {
+            jQuery.noConflict();
+            jQuery($ => {
+                console.log($("#plan-c-btn").text());
+            });
+        };
+    });
+</script>
+
+</body>
+</html>
