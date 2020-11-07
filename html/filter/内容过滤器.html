@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>凉风有幸</div>
+<div></div>
+<p></p>
+<p>秋月无边</p>
+<p class="a">亏我思娇</p>
+<p><span class="a">的情绪好比</span></p>
+<p><span><span class="a">度日如年</span></span></p>
+
+<hr/>
+<button id="contains-btn" type="button">contains</button>
+<br/>
+<button id="empty-btn" type="button">empty</button>
+<br/>
+<button id="parent-btn" type="button">parent</button>
+<br/>
+<button id="has-btn" type="button">has</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        $("#contains-btn")[0].onclick = () => {
+            console.log($(`div:contains("凉风有幸")`));
+        };
+
+        $("#empty-btn")[0].onclick = () => {
+            console.log($("div:empty"));
+
+        };
+
+        $("#parent-btn")[0].onclick = () => {
+            console.log($("p:parent"));
+
+        };
+
+        $("#has-btn")[0].onclick = () => {
+            console.log($("p:has(.a)"));
+            console.log($("p").has(".a"));
+
+        };
+    });
+</script>
+</body>
+</html>
