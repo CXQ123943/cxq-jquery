@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子类过滤器</title>
+</head>
+<body>
+
+<div>
+    <span>span1-1</span>
+    <span>span1-2</span>
+    <span>span1-3</span>
+    <span>span1-4</span>
+</div>
+<div>
+    <span>span2-1</span>
+</div>
+
+<button id="first-child-btn" type="button">first-child</button>
+<br/>
+<button id="last-child-btn" type="button">last-child</button>
+<br/>
+<button id="only-child-btn" type="button">only-child</button>
+<br/>
+<button id="odd-child-btn" type="button">odd-child</button>
+<br/>
+<button id="even-child-btn" type="button">even-child</button>
+<br/>
+<button id="nth-child-btn" type="button">nth-child</button>
+<br/>
+
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+
+        $("#first-child-btn")[0].onclick = () => {
+            console.log($("span:first-child"));
+        };
+
+        $("#last-child-btn")[0].onclick = () => {
+            console.log($("span:last-child"));
+        };
+
+        $("#only-child-btn")[0].onclick = () => {
+            console.log($("span:only-child"));
+        };
+
+        $("#odd-child-btn")[0].onclick = () => {
+            console.log($("span:nth-child(odd)"));
+        };
+
+        $("#even-child-btn")[0].onclick = () => {
+            console.log($("span:nth-child(even)"));
+        };
+
+        $("#nth-child-btn")[0].onclick = () => {
+            console.log($("span:nth-child(0)"));
+            console.log($("span:nth-child(1)"));
+        };
+    });
+</script>
+</body>
+</html>
