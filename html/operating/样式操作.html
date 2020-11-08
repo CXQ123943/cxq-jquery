@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式操作</title>
+    <style type="text/css">
+        #css-sec {
+            width: 100px;
+            height: 50px;
+            background-color: red;
+            margin: 30px;
+            padding: 20px;
+            border: 10px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<section id="css-sec"></section>
+
+<button id="css-btn">操作元素的样式</button>
+<br/>
+<button id="size-btn">操作元素的尺寸</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let cssSec = $("#css-sec");
+
+        $("#css-btn")[0].onclick = () => {
+            console.log(cssSec.css("width"));
+
+            console.log(cssSec.css(["width", "height"]));
+
+            cssSec.css("width", "200px");
+            console.log(cssSec.css("width"));
+
+            cssSec.css("width", (i, v) => {
+                console.log("i=", i);
+                console.log("v=", v);
+                return "300px";
+            });
+            console.log(cssSec.css("width"));
+
+            cssSec.css({
+                "width": "400px",
+                "height": "400px",
+                "backgroundColor": "green"
+            });
+            console.log(cssSec.css(["width", "height", "backgroundColor"]));
+        };
+
+        $("#size-btn")[0].onclick = () => {
+            console.log("width:", cssSec.width());
+            console.log("height:", cssSec.height());
+
+            cssSec.width(200);
+            cssSec.height("100px");
+            console.log("width:", cssSec.width());
+            console.log("height:", cssSec.height());
+
+            console.log("innerWidth:", cssSec.innerWidth());
+            console.log("outerWidth:", cssSec.outerWidth());
+            console.log("outerWidth-true:", cssSec.outerWidth(true));
+            console.log("innerHeight:", cssSec.innerHeight());
+            console.log("outerHeight:", cssSec.outerHeight());
+            console.log("outerHeight-true:", cssSec.outerHeight(true));
+        };
+
+    });
+</script>
+</body>
+</html>
