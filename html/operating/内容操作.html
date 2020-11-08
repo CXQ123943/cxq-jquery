@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section id="content-sec">world</section>
+
+<button id="text-btn">操作元素的TEXT内容</button>
+<br/>
+<button id="html-btn">操作元素的HTML内容</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let contentSec = $("#content-sec");
+
+        $("#text-btn")[0].onclick = () => {
+            console.log(contentSec.text());
+            contentSec.text("hello");
+            console.log(contentSec.text());
+            contentSec.text("<h1>hello</h1>");
+            console.log(contentSec.text());
+        };
+
+        $("#html-btn")[0].onclick = () => {
+            console.log(contentSec.html());
+            contentSec.html("hello");
+            console.log(contentSec.html());
+            contentSec.html("<h1>hello</h1>");
+            console.log(contentSec.html());
+        };
+    });
+</script>
+</body>
+</html>
