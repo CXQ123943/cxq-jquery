@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位操作</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            width: 3000px;
+            height: 5000px;
+        }
+
+        #father {
+            margin-top: 100px;
+            margin-left: 50px;
+            padding-top: 10px;
+            padding-left: 20px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<section id="father">
+    <div id="son"></div>
+</section>
+
+<hr/>
+<button id="offset-btn" type="button">子元素相对视口的距离</button>
+<br/>
+<button id="position-btn" type="button">子元素相对父元素的距离</button>
+<br/>
+<button id="scroll-btn" type="button">滚动条位置</button>
+<br/>
+
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let son = $("#son");
+
+        $("#offset-btn")[0].onclick = () => {
+            console.log("left:", son.offset().left);
+            console.log("top:", son.offset().top);
+        };
+
+        $("#position-btn")[0].onclick = () => {
+            console.log("left:", son.position().left);
+            console.log("top:", son.position().top);
+        };
+
+        $("#scroll-btn")[0].onclick = () => {
+            $(window).scrollTop(100);
+            $(window).scrollLeft(300);
+            $(window).scrollLeft(200);
+            console.log("scrollTop:", $(window).scrollTop());
+            console.log("scrollLeft:", $(window).scrollLeft());
+        };
+    });
+</script>
+
+</body>
+</html>
