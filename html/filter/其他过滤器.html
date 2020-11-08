@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>其他过滤器</title>
+</head>
+<body>
+
+<span id="first-letter"></span>
+<span id="second-letter"></span>
+<div class="a"></div>
+<div class="a b"></div>
+<div class="b"></div>
+<section id="father">
+    <article>
+        <p id="son"></p>
+    </article>
+</section>
+<footer class="footer" id="footer"></footer>
+<footer class="footer"></footer>
+<h1></h1>
+
+<hr/>
+<button id="is-btn" type="button">is</button>
+<br/>
+<button id="has-class-btn" type="button">has-class</button>
+<br/>
+<button id="parent-btn" type="button">parent</button>
+<br/>
+<button id="parents-btn" type="button">parents</button>
+<br/>
+<button id="parentsUntil-btn" type="button">parentsUntil</button>
+<br/>
+<button id="contents-btn" type="button">contents</button>
+<br/>
+<button id="children-btn" type="button">children</button>
+<br/>
+<button id="filter-btn" type="button">filter</button>
+<br/>
+<button id="header-btn" type="button">header</button>
+<br/>
+<button id="focus-btn" type="button">focus</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+
+        $("#is-btn")[0].onclick = () => {
+            let spans = $("span");
+            let firstLetter = $("#first-letter");
+            console.log(spans.eq(0).is(firstLetter));
+            console.log(spans.eq(1).is(firstLetter));
+        };
+
+        $("#has-class-btn")[0].onclick = () => {
+            let divs = $("div");
+            console.log(divs.eq(0).hasClass("a"));
+            console.log(divs.eq(1).hasClass("a"));
+            console.log(divs.eq(2).hasClass("a"));
+        };
+
+        $("#parent-btn")[0].onclick = () => {
+            let son = $("#son");
+            console.log(son.parent());
+            console.log(son.parent("article"));
+            console.log(son.parent("div"));
+        };
+
+        $("#parents-btn")[0].onclick = () => {
+            let son = $("#son");
+            console.log(son.parents());
+            console.log(son.parents("article"));
+        };
+
+        $("#parentsUntil-btn")[0].onclick = () => {
+            let son = $("#son");
+            console.log(son.parentsUntil("section"));
+            console.log(son.parentsUntil("body"));
+        };
+
+        $("#contents-btn")[0].onclick = () => {
+            let father = $("#father");
+            console.log(father.contents());
+            console.log(father.contents("article"));
+        };
+
+        $("#children-btn")[0].onclick = () => {
+            let father = $("#father");
+            console.log(father.children());
+            console.log(father.children("article"));
+        };
+
+        $("#filter-btn")[0].onclick = () => {
+            let footer = $("footer");
+            console.log(footer.filter(".footer"));
+            console.log(footer.filter(".footer,#footer"));
+        };
+
+        $("#header-btn")[0].onclick = () => {
+            console.log($(":header"));
+        };
+
+        $("#focus-btn")[0].onclick = () => {
+            console.log($(":focus"));
+        };
+    });
+</script>
+</body>
+</html>
