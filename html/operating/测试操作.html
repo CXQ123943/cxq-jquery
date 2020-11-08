@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试操作</title>
+</head>
+<body>
+
+<section id="test-sec"></section>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let testSec = $("#test-sec");
+        console.log($.type(testSec));
+        console.log($.isArray([1, 2, 3]));
+        console.log($.isFunction(() => {
+        }));
+        console.log($.isEmptyObject(null));
+        console.log($.contains($("body")[0], testSec[0]));
+        console.log($.isNumeric(123));
+        console.log($.isWindow(window));
+    });
+
+</script>
+
+</body>
+</html>
