@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可见性过滤器</title>
+</head>
+<body>
+
+<section id="hidden-sec">
+    <div style="display: none">display: none</div>
+    <div hidden="hidden">hidden="hidden"</div>
+    <div style="visibility: hidden">visibility: hidden</div>
+    <input type="hidden" value="hidden-input"/>
+</section>
+
+<hr/>
+<button id="hidden-btn" type="button">:hidden</button>
+<br/>
+<button id="visible-btn" type="button">visible</button>
+<br/>
+<button id="show-btn" type="button">show</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let hiddenSec = $("#hidden-sec");
+        $("#hidden-btn")[0].onclick = () => {
+            console.log(hiddenSec.find(":hidden"));
+        };
+
+        $("#visible-btn")[0].onclick = () => {
+            console.log(hiddenSec.find(":visible"));
+        };
+
+        $("#show-btn")[0].onclick = () => {
+            hiddenSec.find("div").eq(0).show();
+            hiddenSec.find("div").eq(1).show();
+            hiddenSec.find("div").eq(2).show();
+            hiddenSec.find("input").eq(0).show();
+        };
+
+    });
+</script>
+</body>
+</html>
