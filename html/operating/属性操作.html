@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .a {
+            background: red;
+        }
+
+        .b {
+            background: green;
+        }
+
+        .c {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+
+<section id="field-sec"></section>
+<label><input id="field-input"/></label>
+<article id="field-art">article</article>
+<footer id="field-footer" class="a">footer</footer>
+
+<button id="attr-btn">操作元素的ID属性</button>
+<br/>
+<button id="val-btn">操作元素的value属性</button>
+<br/>
+<button id="class-btn">操作元素的class属性</button>
+<br/>
+<button id="toggle-class-btn">切换元素的class属性</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let fieldSec = $("#field-sec");
+        let fieldInput = $("#field-input");
+        let fieldArt = $("#field-art");
+
+        $("#attr-btn")[0].onclick = () => {
+            console.log(fieldSec.attr("id"));
+            console.log(fieldSec.attr("ID"));
+
+            fieldSec.attr("id", "attr-btn-1");
+            console.log(fieldSec.attr("id"));
+
+            fieldSec.attr("id", (i, v) => {
+                console.log("i=", i);
+                console.log("v=", v);
+                return "attr-btn-2";
+            });
+            console.log(fieldSec.attr("id"));
+
+            fieldSec.attr({
+                "id": "attr-btn-3",
+                "name": "name-3"
+            });
+            console.log(fieldSec.attr("id"));
+            console.log(fieldSec.attr("name"));
+
+            fieldSec.removeAttr("name");
+            console.log(fieldSec.attr("id"));
+            console.log(fieldSec.attr("name"));
+        };
+
+        $("#val-btn")[0].onclick = () => {
+            console.log(fieldInput.val());
+            fieldArt.val("hello");
+            console.log(fieldInput.val());
+        };
+
+        $("#class-btn")[0].onclick = () => {
+            console.log(fieldArt.hasClass("a"));
+
+            fieldArt.addClass("a");
+            fieldArt.addClass("b");
+            console.log(fieldArt.hasClass("a"));
+            console.log(fieldArt.hasClass("b"));
+
+            fieldArt.removeClass("b");
+            console.log(fieldArt.hasClass("a"));
+            console.log(fieldArt.hasClass("b"));
+        };
+
+        let fieldFooter = $("#field-footer");
+        $("#toggle-class-btn")[0].onclick = () => {
+            if (fieldFooter.hasClass("a")) {
+                fieldFooter.toggleClass("a b");
+            } else if (fieldFooter.hasClass("b")) {
+                fieldFooter.toggleClass("b c");
+            } else {
+                fieldFooter.toggleClass("c a")
+            }
+        };
+    });
+</script>
+
+
+</body>
+</html>
