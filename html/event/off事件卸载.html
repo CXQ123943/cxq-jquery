@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>off事件卸载</title>
+    <style type="text/css">
+        section {
+            width: 250px;
+            height: 50px;
+            background: red;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<section id="off-a-sec">A</section>
+<section id="off-b-sec">B</section>
+<section id="off-c-sec">C</section>
+<section id="off-d-sec">D</section>
+<section id="off-e-sec">E</section>
+<section id="off-f-sec">F</section>
+<hr/>
+<button id="off-a-btn">解绑A的所有事件</button>
+<br/>
+<button id="off-b-btn">解绑B的所有click事件，mouseout事件保留</button>
+<br/>
+<button id="off-c-btn">解绑B的所有click和mouseout事件</button>
+<br/>
+<button id="off-d-btn">解绑C的所有click事件中的myFunctionA处理，myFunctionB保留</button>
+<br/>
+<button id="off-e-btn">解绑D的所有click.a事件，click.b事件保留</button>
+<br/>
+<button id="off-f-btn">解绑E的所有.b后缀事件</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let offASec = $("#off-a-sec");
+        offASec.on("click mouseout", () => console.log("event a..."));
+
+        let offBSec = $("#off-b-sec");
+        offBSec.on("click mouseout", () => console.log("event b..."));
+
+        let offCSec = $("#off-c-sec");
+        offCSec.on("click mouseout", () => console.log("event c..."));
+
+        let offDSec = $("#off-d-sec");
+        offDSec.on("click", myFunctionA);
+        offDSec.on("click", myFunctionB);
+
+        let offESec = $("#off-e-sec");
+        offESec.on("click.a", () => console.log("click.a..."));
+        offESec.on("click.b", () => console.log("click.b..."));
+
+        let offFSec = $("#off-f-sec");
+        offFSec.on("click.a", () => console.log("click.a..."));
+        offFSec.on("click.b", () => console.log("click.b..."));
+        offFSec.on("mouseout.a", () => console.log("mouseout.a..."));
+        offFSec.on("mouseout.b", () => console.log("mouseout.b..."));
+
+
+        $("#off-a-btn").on("click", () => {
+            offASec.off();
+        });
+
+        $("#off-b-btn").on("click", () => {
+            offBSec.off("click");
+        });
+
+        $("#off-c-btn").on("click", () => {
+            offCSec.off("click mouseout");
+        });
+
+        $("#off-d-btn").on("click", () => {
+            offDSec.off("click", myFunctionA);
+        });
+
+        $("#off-e-btn").on("click", () => {
+            offESec.off("click.b");
+        });
+
+        $("#off-f-btn").on("click", () => {
+            offFSec.off(".b");
+        });
+
+    });
+
+    function myFunctionA() {
+        console.log("my function a...");
+    }
+
+    function myFunctionB() {
+        console.log("my function b...");
+    }
+</script>
+</body>
+</html>
