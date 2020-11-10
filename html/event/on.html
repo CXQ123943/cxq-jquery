@@ -2,67 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>on事件挂载</title>
+    <title>Title</title>
     <style type="text/css">
-        #bubble-sec, #no-bubble-sec {
+        section {
+            width: 250px;
+            height: 50px;
             background: red;
-            margin-bottom: 10px;
+            margin: 10px;
+            padding: 10px;
         }
     </style>
-
 </head>
 <body>
 
-<section id="bubble-sec">
-    <button id="bubble-a-btn" type="button">可以冒泡的按钮A</button>
-    <button id="bubble-b-btn" type="button">可以冒泡的按钮B</button>
+<section id="on-sec-a">on挂载：带名函数处理</section>
+<section id="on-sec-b">on挂载：匿名函数处理</section>
+<section id="on-sec-c">on挂载：多种事件，相同处理</section>
+<section id="on-sec-d">on挂载：多种事件，不同处理</section>
+
+<section id="selector-sec">
+    <button id="a-btn" type="button">按钮A</button>
+    <button id="b-btn" type="button">按钮B</button>
+    <button type="button">按钮C</button>
+    <button type="button">按钮D</button>
 </section>
 
-<section id="no-bubble-sec">
-    <button id="no-bubble-a-btn" type="button">可以冒泡的按钮A</button>
-    <button id="no-bubble-b-btn" type="button">取消冒泡的按钮B</button>
+<section id="data-sec">
+    参数data
 </section>
-
-<hr/>
-<button id="simple-btn" type="button">最简on()</button>
-<br/>
-
-<button id="data-btn" type="button">参数data</button>
-<br/>
 
 <script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
 <script type="text/javascript">
     $(() => {
-        let simpleBtn = $("#simple-btn");
-        simpleBtn.on("click", myFunction);
-        simpleBtn.on("click", () => console.log("call no-name function..."));
-        simpleBtn.on("click mouseover", () => console.log("multiple events, same type..."));
-        simpleBtn.on({
-            "click": () => console.log("json-click..."),
-            "mouseover": () => console.log("json-mouseover..."),
+
+        $("#on-sec-a").on("click", myFunction);
+        $("#on-sec-b").on("click", () => console.log("b-click..."));
+        $("#on-sec-c").on("click mouseout", () => console.log("c-click or c-mouseout..."));
+        $("#on-sec-d").on({
+            "click": () => console.log("d-click..."),
+            "mouseout": () => console.log("d-mouseout..."),
         });
 
-        $("#bubble-sec").on("click", () => {
-            console.log("click bubble-sec...");
-        });
-
-        $("#no-bubble-sec").on("click", "#no-bubble-a-btn", () => {
-            console.log("click no-bubble-sec...");
+        let selector = "#a-btn,#b-btn";
+        $("#selector-sec").on("click", selector, () => {
+            console.log("bubble...");
         });
 
         let data = {"score": [90, 100, 80], "age": 3};
-        $("#data-btn").on("click", data, event => {
-            let ev = event || window.event;
-            console.log(ev.data["score"]);
-        })
+        $("#data-sec").on("click", data, ev => {
+            ev = ev || event;
+            console.log("data:", ev.data["score"]);
+        });
 
     });
 
 
     function myFunction() {
-        console.log("call myFunction...");
+        console.log("a-click...");
     }
-</script>
 
+</script>
 </body>
 </html>
