@@ -16,7 +16,17 @@
 <br/>
 <button id="element-each-btn" type="button">o.each()</button>
 <br/>
-<button id="extends-each-btn" type="button">$.extends()</button>
+<button id="extends-btn" type="button">$.extends()</button>
+<br/>
+<button id="merge-btn" type="button">$.merge()</button>
+<br/>
+<button id="grep-btn" type="button">$.grep()</button>
+<br/>
+<button id="map-btn" type="button">$.map()</button>
+<br/>
+<button id="unique-btn" type="button">$.unique()</button>
+<br/>
+<button id="in-array-btn" type="button">$.inArray()</button>
 <br/>
 
 <script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
@@ -57,7 +67,7 @@
             });
         };
 
-        $("#extends-each-btn")[0].onclick = () => {
+        $("#extends-btn")[0].onclick = () => {
 
             let arr = [1, 2, 3];
             let arr1 = [4];
@@ -65,11 +75,11 @@
             let arrResult = $.extend(arr, arr1, arr2);
             console.log("arr:", arr);
             console.log("arr1:", arr1);
-            console.log("arr1:", arr2);
+            console.log("arr2:", arr2);
             console.log("arrResult:", arrResult);
 
             let json = {a: 1, b: 2};
-            let json1 = {c: 3};// a4 b5 c3
+            let json1 = {c: 3};
             let json2 = {a: 4, b: 5};
             let jsonResult = $.extend(json, json1, json2);
             console.log("json:", json);
@@ -78,7 +88,45 @@
             console.log("jsonResult:", jsonResult);
         };
 
+        $("#merge-btn")[0].onclick = () => {
+            let arr = [1, 3, 5];
+            let arr1 = [3, 5, 7];
+            let arrResult = $.merge(arr, arr1);
+            console.log("arr:", arr);
+            console.log("arr1:", arr1);
+            console.log("arrResult:", arrResult);
+        };
 
+        $("#grep-btn")[0].onclick = () => {
+            let arr = [1, 2, 3, 4, 5];
+            let arrResultA = $.grep(arr, (v, i) => v > 2, true);
+            let arrResultB = $.grep(arr, (v, i) => v > 2, false);
+            console.log(arr);
+            console.log(arrResultA);
+            console.log(arrResultB);
+        };
+
+        $("#map-btn")[0].onclick = () => {
+            let arr = [1, 2, 3];
+            let arrResult = $.map(arr, (v, i) => v * 2);
+            console.log(arr);
+            console.log(arrResult);
+        };
+
+        $("#unique-btn")[0].onclick = () => {
+            let arr = [1, 1, 1, 3, 3, 3, 4];
+            let arrResult = $.unique(arr);
+            console.log(arr);
+            console.log(arrResult);
+        };
+
+        $("#in-array-btn")[0].onclick = () => {
+            let arr = [1, 1, 1, 3, 3, 3, 4];
+            let result1 = $.inArray(3, arr);
+            let result2 = $.inArray(5, arr);
+            console.log(result1);
+            console.log(result2);
+        };
     });
 </script>
 </body>
