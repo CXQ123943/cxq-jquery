@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>on事件挂载</title>
+    <style type="text/css">
+        #bubble-sec, #no-bubble-sec {
+            background: red;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<section id="bubble-sec">
+    <button id="bubble-a-btn" type="button">可以冒泡的按钮A</button>
+    <button id="bubble-b-btn" type="button">可以冒泡的按钮B</button>
+</section>
+
+<section id="no-bubble-sec">
+    <button id="no-bubble-a-btn" type="button">可以冒泡的按钮A</button>
+    <button id="no-bubble-b-btn" type="button">取消冒泡的按钮B</button>
+</section>
+
+<hr/>
+<button id="simple-btn" type="button">最简on()</button>
+<br/>
+
+<button id="data-btn" type="button">参数data</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let simpleBtn = $("#simple-btn");
+        simpleBtn.on("click", myFunction);
+        simpleBtn.on("click", () => console.log("call no-name function..."));
+        simpleBtn.on("click mouseover", () => console.log("multiple events, same type..."));
+        simpleBtn.on({
+            "click": () => console.log("json-click..."),
+            "mouseover": () => console.log("json-mouseover..."),
+        });
+
+        $("#bubble-sec").on("click", () => {
+            console.log("click bubble-sec...");
+        });
+
+        $("#no-bubble-sec").on("click", "#no-bubble-a-btn", () => {
+            console.log("click no-bubble-sec...");
+        });
+
+        let data = {"score": [90, 100, 80], "age": 3};
+        $("#data-btn").on("click", data, event => {
+            let ev = event || window.event;
+            console.log(ev.data["score"]);
+        })
+
+    });
+
+
+    function myFunction() {
+        console.log("call myFunction...");
+    }
+</script>
+
+</body>
+</html>
