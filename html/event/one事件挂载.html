@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>one事件挂载</title>
+</head>
+<body>
+
+<button id="one-btn" type="button">noe()</button>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+
+<script type="text/javascript">
+    $(() => {
+        $("#one-btn").one("click", () => {
+            console.log("one...");
+        });
+    });
+</script>
+
+</body>
+</html>
