@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点</title>
+</head>
+<body>
+
+<section id="my-sec">
+
+</section>
+
+<ul id="user-ul">
+    <li>广坤</li>
+</ul>
+
+<hr/>
+<button id="create-node-btn" type="button">创建节点</button>
+<br/>
+<button id="clone-false-btn" type="button">不带事件克隆</button>
+<br/>
+<button id="clone-true-btn" type="button">带事件克隆</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let userUl = $("#user-ul");
+
+        $("#create-node-btn").click(() => {
+            /*方式一*/
+            let div = $(`<div id="new-div">新节点</div>>`);
+            console.log(div);
+
+            /*方式二*/
+            let p = $(`<p>`);
+            p.attr("id", "new-p");
+            console.log(p);
+        });
+
+        $("#clone-false-btn").click(ev => {
+            ev = ev || event;
+            let newBtn = $(ev.currentTarget).clone();
+            $("body").append(newBtn);
+        });
+
+        $("#clone-true-btn").click(ev => {
+            ev = ev || event;
+            let newBtn = $(ev.target).clone(true);
+            $("body").append(newBtn);
+        });
+
+        $("#append-btn").click(() => {
+            userUl.append(`<li>赵四1</li>`);
+            userUl.append($(`<li>赵四2</li>`));
+            userUl.append((i, v) => `<li>赵四3</li>`);
+            $(`<li>赵四4</li>`).appendTo(userUl);
+        });
+
+        $("#prepend-btn").click(() => {
+            userUl.prepend(`<li>大脚1</li>`);
+            userUl.prepend($(`<li>大脚2</li>`));
+            userUl.prepend((i, v) => `<li>大脚3</li>`);
+            $(`<li>大脚4</li>`).prependTo(userUl);
+        });
+
+    });
+</script>
+
+</body>
+</html>
