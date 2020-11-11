@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>from表单事件</title>
+    <style type="text/css">
+        #parent-sec {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<form id="login-form" action="http://www.baidu.com" method="get">
+    <label><input id="select-ipt" value="文本选中..."/></label><br/>
+    <label><input id="change-ipt" value="文本改变..."/></label><br/>
+    <label><input id="focus-ipt" value="获取焦点..."/></label><br/>
+    <label><input id="blur-ipt" value="丧失焦点..."/></label><br/>
+    <button type="submit">提交</button>
+</form>
+
+<section id="parent-sec">
+    <label><input id="zi-ipt" value="子元素获取/丧失焦点..."/></label><br/>
+</section>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        $(document).keypress(() => console.log("keypress..."));
+        $(document).keydown(() => console.log("keydown..."));
+        $(document).keyup(() => console.log("keyup..."));
+
+        $("#select-ipt").select(() => console.log("select..."));
+        $("#change-ipt").change(() => console.log("change..."));
+
+        $("#focus-ipt").focus(() => console.log("focus..."));
+        $("#blur-ipt").blur(() => console.log("blur..."));
+
+        let parentSec = $("#parent-sec");
+        parentSec.focusin(() => console.log("focusin..."));
+        parentSec.focusout(() => console.log("focusout..."));
+    });
+</script>
+
+</body>
+</html>
