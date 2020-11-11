@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style type="text/css">
+        section {
+            margin-top: 10px;
+        }
+
+        #fu1, #fu2 {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        .zi {
+            width: 100px;
+            height: 100px;
+            background: green;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<section>
+    <button id="click-btn" type="button">鼠标左键单击我</button>
+    <br/>
+    <button id="dblclick-btn" type="button">鼠标左键双击我</button>
+    <br/>
+    <button id="mousemove-btn" type="button">鼠标在我身上移动</button>
+    <br/>
+</section>
+
+<section id="fu1">
+    <div class="zi">鼠标移入移出</div>
+</section>
+
+<section id="fu2">
+    <div class="zi">鼠标穿入穿出</div>
+</section>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let clickBtn = $("#click-btn");
+        clickBtn.mousedown(() => console.log("click-mousedown..."));
+        clickBtn.mouseup(() => console.log("click-mouseup..."));
+        clickBtn.click(() => console.log("click..."));
+
+        $("#dblclick-btn").dblclick(() => console.log("dblclick..."));
+        $("#mousemove-btn").mousemove(() => console.log("mousemove..."));
+
+        let fu1 = $("#fu1");
+        fu1.mouseover(() => console.log("mouseover..."));
+        fu1.mouseout(() => console.log("mouseout..."));
+
+        let fu2 = $("#fu2");
+        fu2.mouseenter(() => console.log("mouseenter..."));
+        fu2.mouseleave(() => console.log("mouseleave..."));
+    });
+</script>
+
+</body>
+</html>
