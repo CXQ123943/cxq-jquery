@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>窗口事件</title>
+    <style type="text/css">
+        body {
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        $(window).resize(() => console.log("resize..."));
+        $(window).scroll(() => console.log("scroll..."));
+    });
+</script>
+
+</body>
+</html>
