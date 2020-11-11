@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event关键字</title>
+    <style type="text/css">
+        #event-div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="event-div">
+    <button type="button">click me!</button>
+</div>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let data = [1, 2];
+        $("#event-div").click(data, ev=> {
+            ev = ev || event;
+
+            console.log("type:", ev.type);
+            console.log("target:", ev.target);
+            console.log("currentTarget:", ev.currentTarget);
+            console.log("data:", ev.data);
+            console.log("timeStamp:", ev.timeStamp);
+        });
+    });
+</script>
+
+</body>
+</html>
