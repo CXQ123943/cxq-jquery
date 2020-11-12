@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo-username验证</title>
+</head>
+<body>
+
+<label><input id="username-ipt"></label>
+<span id="username-ver"></span>
+
+</body>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+        let usernameIpt = $("#username-ipt");
+        let usernameVer = $("#username-ver");
+
+        usernameIpt.blur(() => {
+            let isExist = false;
+            let url = "user.json";
+            $.get(url, response => {
+                $.each(response["user"], (i, v) => {
+                    if (usernameIpt.val() === v) {
+                        isExist = true;
+                    }
+                });
+                if (isExist) {
+                    usernameVer.text("帐号已经存在！");
+                    usernameVer.css("color", "red");
+                } else {
+                    usernameVer.text("帐号可以使用！");
+                    usernameVer.css("color", "green");
+                }
+            }, "json");
+        });
+    });
+</script>
+
+</html>
