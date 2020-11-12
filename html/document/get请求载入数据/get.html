@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="get-btn" type="button">使用get()加载get-data.html</button>
+<br/>
+<button id="get-txt-btn" type="button">使用get()加载get-data.txt</button>
+<br/>
+<button id="get-xml-btn" type="button">使用get()加载get-data.xml</button>
+<br/>
+<button id="get-js-btn" type="button">使用get()加载get-data.js</button>
+<br/>
+<button id="get-json-btn" type="button">使用get()加载get-data.json</button>
+<br/>
+
+<script type="text/javascript" src="../../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+
+        $("#get-btn").click(() => {
+            let url = "get-data.html?name-jack";
+            $.get(url,(response, isSuccess, xhr) => {
+                console.log("response:", response);
+                console.log("isSuccess:", isSuccess);
+                console.log("xhr:", xhr);
+            }, "html");
+        });
+
+        $("#get-txt-btn").click(() => {
+            let url = "get-data.txt?name=jack";
+            $.get(url, (response, isSuccess, xhr) => {
+                console.log("response:", response);
+                console.log("isSuccess:", isSuccess);
+                console.log("xhr:", xhr);
+            }, "text");
+        });
+
+        $("#get-xml-btn").click(() => {
+            let url = "get-data.xml?name=jack";
+            $.get(url, (response, isSuccess, xhr) => {
+                console.log("response:", response);
+                console.log("isSuccess:", isSuccess);
+                console.log("xhr:", xhr);
+                console.log($(response).find("root").find("url").text());
+            }, "xml");
+        });
+
+        $("#get-js-btn").click(() => {
+            let url = "get-data.js?name=jack";
+            // 也可以使用 $.getScript(url, [callback]) 替代
+            $.get(url, (response, isSuccess, xhr) => {
+                console.log("response:", response);
+                console.log("isSuccess:", isSuccess);
+                console.log("xhr:", xhr);
+                myFunction();
+            }, "script");
+        });
+
+        $("#get-json-btn").click(() => {
+            let url = "get-data.json?name=jack";
+            $.get(url, (response, isSuccess, xhr) => {
+                console.log("response:", response);
+                console.log("isSuccess:", isSuccess);
+                console.log("xhr:", xhr);
+                console.log("username:", response["username"]);
+                console.log("password:", response["password"]);
+            }, "json");
+        });
+
+    });
+</script>
+
+</body>
+</html>
