@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax序列化</title>
+</head>
+<body>
+
+<form id="login-form">
+    <label><input name="username" value="steven"></label>
+    <label><input name="password" value="123"></label>
+</form>
+<hr/>
+<button id="query-string-btn" type="button">序列化成查询串</button>
+<br/>
+<button id="json-array-btn" type="button">序列化成JSON数组</button>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+    $(() => {
+        let loginForm = $("#login-form");
+
+        $("#query-string-btn").click(() => {
+            console.log(loginForm.serialize());
+        });
+
+        $("#json-array-btn").click(() => {
+            console.log(loginForm.serializeArray());
+        });
+    });
+
+
+</script>
+
+</body>
+</html>
