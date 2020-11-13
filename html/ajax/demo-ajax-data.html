@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+
+    $(() => {
+
+        let body = $("body");
+
+        /*创建一个获取数据的按钮并且追加到<body>中*/
+        let btn = $(`<button type="button">获取数据</button>`);
+        btn.appendTo(body);
+
+        /*创建一个<table>，设计<table>的样式，然后追加到<body>中*/
+        let table = $(`
+        <table>
+            <tr><th>姓名</th><th>年龄</th><th>性别</th></tr>
+        </table>
+    `);
+
+        table.css({
+            "margin": "0 auto",
+            "border": "1px solid red",
+            "width": "500px",
+            "text-align": "center"
+        });
+
+        table.appendTo(body);
+
+        /*给按钮挂载点击事件*/
+        btn.one("click", () => {
+
+            /*利用ajax获取json中的数据*/
+            $.ajax({
+                url: "ajax-data.json",
+                type: "post",
+                dataType: "json",
+                success: response => {
+                    $.each(response, (i, v) => {
+                        let tr = $(`
+                        <tr>
+                            <td>${v["name"]}</td><td>${v["age"]}</td><td>${v["gender"]}</td>
+                        </tr>
+                    `);
+                        tr.appendTo(table);
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>
