@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax文件上传</title>
+    <style type="text/css">
+        #img-preview {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+<body>
+
+<form id="login-form">
+    <label>
+        <input id="file-ipt" type="file" name="srcFile"/>
+    </label>
+    <hr/>
+    <img id="img-preview" src="../../image/ylt.png" alt=""/>
+    <hr/>
+    <button id="upload-btn" type="button">上传</button>
+</form>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+
+        $("#upload-btn").click(() => {
+            $.ajax({
+                "url": "ajax-data.json",
+                "type": "post",
+                "data": new FormData($("#login-form")[0]),
+                "processData": false,
+                "contentType": false,
+                "dataType": "json",
+                success: () => console.log("upload ok...")
+            });
+        });
+
+        let fileIpt = $("#file-ipt");
+
+        fileIpt.on("change", ev => {
+            ev = ev || event;
+            let file = ev.target.files || ev.dataTransfer.files;
+            console.log(file);
+
+            if (file) {
+                if (file[0].size > 1024 * 1600) {
+                    alert("文件太大，不能超过1600K！");
+                    fileIpt.val("");
+                    return;
+                }
+                if (file[0].type !== "image/jpeg") {
+                    alert("文件类型不对，必须是JPG格式！");
+                    fileIpt.val("");
+                    return;
+                }
+                let reader = new FileReader();
+                reader.onload = (ev) => {
+                    ev = ev || event;
+                    $("#img-preview").attr("src", ev.target.result);
+                };
+                reader.readAsDataURL(file[0]);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
