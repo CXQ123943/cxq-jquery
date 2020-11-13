@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax环绕事件</title>
+</head>
+<body>
+
+<button id="ajax-success-btn" type="button">成功发送ajax</button>
+<br/>
+<button id="ajax-fail-btn" type="button">错误发送ajax</button>
+<br/>
+
+<script type="text/javascript" src="../../script/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(() => {
+
+        /*将global设为false，可以禁止该AJAX请求触发全局的AJAX事件*/
+        $.ajaxSetup({
+            "url": "ajax-data.json",
+            "type": "get",
+        });
+
+        $.ajaxSetup({
+            "dataType": "json",
+            "global": true,
+            "success": () => console.log("ajax发送...")
+        });
+
+        $("#ajax-success-btn").click(() => {
+            $(document).ajaxStart(() => console.log("ajax开始前-1..."));
+            $(document).ajaxStart(() => console.log("ajax开始前-2..."));
+            $(document).ajaxSend(() => console.log("ajax发送前..."));
+            $.ajax({});
+            $(document).ajaxSuccess(() => console.log("ajax发送成功..."));
+            $(document).ajaxComplete(() => console.log("ajax发送完成..."));
+            $(document).ajaxStop(() => console.log("ajax发送结束..."));
+        });
+
+        $("#ajax-fail-btn").click(() => {
+            $(document).ajaxStart(() => console.log("ajax开始前-1..."));
+            $(document).ajaxStart(() => console.log("ajax开始前-2..."));
+            $(document).ajaxSend(() => console.log("ajax发送前..."));
+            $.ajax({"url": "ajax-data1111.json",});
+            $(document).ajaxError(() => console.log("ajax发送失败..."));
+            $(document).ajaxComplete(() => console.log("ajax发送完成..."));
+            $(document).ajaxStop(() => console.log("ajax发送结束..."));
+        });
+
+    });
+</script>
+
+</body>
+</html>
