@@ -83,22 +83,22 @@ function getDirections() {
 function thisSettlement() {
     screen = $(".screen");
     let color = "red";
-    let grade = "一般般！";
+    let grade = "JUST SO SO 一般般！";
     if (ordinate > directionArr.length - 1) {
         if (ball.position().left >= 120 && ball.position().left < 130) {
-            grade = "完美！";
+            grade = "PERFECT 完美！";
             color = "red";
             score += 500;
         } else if (ball.position().left >= 110 && ball.position().left < 140) {
-            grade = "不可思议！";
+            grade = "UNBELIEVABLE 不可思议！";
             color = "green";
             score += 300;
         } else if (ball.position().left >= 100 && ball.position().left < 150) {
-            grade = "一般般！";
+            grade = "JUST SO SO 一般般！";
             color = "yellow";
             score += 100;
         } else {
-            grade = "辣鸡！";
+            grade = "RUBBISH 辣鸡！";
             color = "white";
             score += 0;
         }
