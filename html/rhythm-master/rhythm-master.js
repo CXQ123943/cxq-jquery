@@ -109,7 +109,7 @@ function thisSettlement() {
 }
 
 function gameOver() {
-    screen.html("游戏结束，最终得分：" + score + "分").css("color", "green");
+    screen.html("游戏结束！最终得分：" + score + "分").css("color", "green");
     clearTimeout(timer);
     $(document).off();
 }
