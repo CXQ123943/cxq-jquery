@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rhythm Game</title>
+    <script src="../../script/jquery-3.2.1.js" type="text/javascript"></script>
+    <script src="rhythm-master.js" type="text/javascript"></script>
+    <link href="rhythm-master.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<section class="board">
+    <header>
+        <article class="header_left">
+            分数：<span class="score">0</span>
+        </article>
+        <article class="header_right">
+            <a href="javascript:" onclick="alert('劲舞团没玩过啊？');">游戏说明</a>
+            <a href="javascript:" onclick="alert('你就是最牛逼的！');">排行榜</a>
+        </article>
+    </header>
+    <section class="danceMan">
+        <img src="dance.gif" alt="">
+        <img src="dance.gif" alt="">
+        <img src="dance.gif" alt="">
+    </section>
+    <section class="screen">
+        点击
+        <a href="javascript:" onclick="alert('start按钮在下面呢，点我干屁？');">
+            Start
+        </a>
+        开始
+    </section>
+    <section class="bar">
+        <article class="progress">
+            <article class="ball"></article>
+        </article>
+    </section>
+    <section class="keyboard">
+        <div class="arrowKeys"></div>
+        <div class="arrowKeys"></div>
+        <div class="arrowKeys"></div>
+        <div class="arrowKeys"></div>
+        <div class="arrowKeys"></div>
+        <div class="arrowKeys"></div>
+        <div class="arrowKeys"></div>
+        <div class="arrowKeys"></div>
+    </section>
+    <footer>
+        <button id="resetBtn">RESET</button>
+        <button id="startBtn">START</button>
+        <button id="optionBtn">OPTION</button>
+    </footer>
+</section>
+</body>
+</html>
