@@ -21,6 +21,7 @@ $(() => {
 function initMusic() {
     $.ajax({
         url: "song001.json",
+        dataType: "json",
         success: response => song = response
     });
 }
